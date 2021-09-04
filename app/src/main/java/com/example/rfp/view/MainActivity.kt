@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.bluetooth.BluetoothDevice
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.rfp.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,9 +45,15 @@ class MainActivity : AppCompatActivity() {
         getPermission()
         arduinoBluetooth()
 
+        setChangeUI()
+
+    }
+
+    private fun setChangeUI() {
         lastColor = ContextCompat.getColor(this, R.color.blank)
 
-        main_navigation.setOnItemSelectedListener(object : ChipNavigationBar.OnItemSelectedListener {
+        main_navigation.setOnItemSelectedListener(object :
+            ChipNavigationBar.OnItemSelectedListener {
             override fun onItemSelected(id: Int) {
                 val option = when (id) {
                     R.id.home -> R.color.home to "Home"
@@ -64,15 +71,24 @@ class MainActivity : AppCompatActivity() {
         expand_button.setOnClickListener {
             if (main_navigation.isExpanded()) {
                 TransitionManager.beginDelayedTransition(container, ChangeBounds())
+                expand_button.setImageResource(R.drawable.ic_baseline_arrow_forward_24)
+                main_navigation.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
                 main_navigation.collapse()
             } else {
                 TransitionManager.beginDelayedTransition(container, ChangeBounds())
+                expand_button.setImageResource(R.drawable.ic_arrow_24)
+                main_navigation.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
                 main_navigation.expand()
             }
         }
 
         expand_button.applyWindowInsets(bottom = true)
-
     }
 
     private fun arduinoBluetooth() {
