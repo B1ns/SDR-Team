@@ -10,6 +10,8 @@
 
     <color name="blank">#696969</color>
 
+    <color name="main">#211c34</color>
+
     <color name="graph">#FFBB86FC</color>
     <color name="bluetooth">#FF6200EE</color>
     <color name="home">@android:color/holo_green_light</color>

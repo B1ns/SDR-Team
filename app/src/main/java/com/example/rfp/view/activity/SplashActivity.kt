@@ -1,10 +1,11 @@
-package com.example.rfp.view
+package com.example.rfp.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.rfp.R
+import com.example.rfp.view.activity.MainActivity
 import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity<MainActivity>()
-        }, 3000)
+        }, 1000)
 
     }
 }

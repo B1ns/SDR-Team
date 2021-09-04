@@ -8,4 +8,7 @@
     <string name="rf">작품연구회</string>
     <string name="dongyang_mirae_university">Dongyang Mirae University</string>
     <string name="settings">SETTINGS</string>
+    <string name="copyright_2021_all_rights_reserved">Copyright 2021. 작품연구회 All Rights Reserved.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

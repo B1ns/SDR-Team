@@ -1,4 +1,4 @@
-package com.example.rfp.view
+package com.example.rfp.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

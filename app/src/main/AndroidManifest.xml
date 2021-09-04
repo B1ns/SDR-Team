@@ -17,15 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RFP">
         <activity
-            android:name=".view.SettingActivity"
+            android:name=".view.activity.SettingActivity"
             android:exported="true" />
         <activity
-            android:name=".view.BluetoothActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".view.SplashActivity"
+            android:name=".view.activity.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="landscape">
@@ -36,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="landscape" />
