@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import com.example.rfp.data.applyWindowInsets
 import com.example.rfp.data.colorAnimation
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,11 +46,19 @@ class MainActivity : AppCompatActivity() {
         getPermission()
         arduinoBluetooth()
 
+        setOnClickListener()
         setChangeUI()
 
     }
 
+    private fun setOnClickListener() {
+        setting_btn.setOnClickListener {
+            startActivity<SettingActivity>()
+        }
+    }
+
     private fun setChangeUI() {
+
         lastColor = ContextCompat.getColor(this, R.color.blank)
 
         main_navigation.setOnItemSelectedListener(object :
