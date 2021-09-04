@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/ic_main"
+        android:title="Main"
+        app:cnb_iconColor="@color/home" />
+
+    <item
+        android:id="@+id/bluetooth"
+        android:icon="@drawable/ic_bluetooth"
+        android:title="BlueTooth"
+        app:cnb_iconColor="@color/home" />
+
+    <item
+        android:id="@+id/Graph"
+        android:icon="@drawable/ic_graph"
+        android:title="Graph"
+        app:cnb_iconColor="@color/graph" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_info"
+        android:title="more"
+        app:cnb_iconColor="@color/more" />
+
+</menu>

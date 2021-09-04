@@ -112,18 +112,7 @@
 
                 </FrameLayout>
 
-                <LinearLayout
-                    android:id="@+id/change_frame_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent">
 
-
-
-                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
