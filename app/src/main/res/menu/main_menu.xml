@@ -6,24 +6,33 @@
         android:id="@+id/main"
         android:icon="@drawable/ic_main"
         android:title="Main"
+        android:enabled="true"
+        app:cnb_textColor="@color/white"
         app:cnb_iconColor="@color/home" />
 
     <item
         android:id="@+id/bluetooth"
         android:icon="@drawable/ic_bluetooth"
         android:title="BlueTooth"
-        app:cnb_iconColor="@color/home" />
+        android:enabled="true"
+        app:cnb_textColor="@color/white"
+        app:cnb_iconColor="@color/bluetooth" />
 
     <item
         android:id="@+id/Graph"
         android:icon="@drawable/ic_graph"
         android:title="Graph"
+        android:enabled="true"
+        app:cnb_textColor="@color/white"
         app:cnb_iconColor="@color/graph" />
 
     <item
         android:id="@+id/more"
         android:icon="@drawable/ic_info"
         android:title="more"
+        android:enabled="true"
+        app:cnb_textColor="@color/white"
         app:cnb_iconColor="@color/more" />
+
 
 </menu>

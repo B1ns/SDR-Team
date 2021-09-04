@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#211c34"
@@ -11,16 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:weightSum="8"
+        android:weightSum="11"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:background="#262238"
             android:orientation="vertical">
 
@@ -39,7 +42,7 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="175dp"
+                        android:layout_height="410dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/main_logo_bg" />
 
@@ -54,10 +57,9 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/logo_imageView"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_margin="20dp"
-
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="40dp"
                             android:src="@drawable/main_icon"
                             app:layout_constraintBottom_toTopOf="@id/logo_textView"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -68,11 +70,11 @@
                             android:id="@+id/logo_textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="30dp"
                             android:fontFamily="@font/font"
                             android:text="@string/rf"
                             android:textColor="@color/white"
-                            android:textSize="8pt"
+                            android:textSize="14pt"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/logo_imageView" />
@@ -81,11 +83,11 @@
                             android:id="@+id/main_logo_textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="50dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="80dp"
                             android:text="@string/dongyang_mirae_university"
                             android:textColor="#808080"
-                            android:textSize="3pt"
+                            android:textSize="9pt"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -94,15 +96,15 @@
                         <Button
                             android:id="@+id/main_logo_btn"
                             style="@style/Text.TitleStyle"
-                            android:layout_width="70dp"
-                            android:layout_height="22dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_width="150dp"
+                            android:layout_height="42dp"
+                            android:layout_marginTop="25dp"
                             android:background="@drawable/main_button"
                             android:fontFamily="@font/font"
                             android:text="@string/settings"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
-                            android:textSize="4pt"
+                            android:textSize="7pt"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -112,9 +114,27 @@
 
                 </FrameLayout>
 
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                android:id="@+id/main_navigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="40dp"
+                app:cnb_iconSize="32dp"
+                app:cnb_menuResource="@menu/main_menu"
+                app:cnb_orientationMode="vertical" />
+
+            <ImageView
+                android:id="@+id/expand_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:src="@drawable/ic_menu"
+                app:tint="#696969" />
 
         </LinearLayout>
 
