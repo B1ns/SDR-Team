@@ -13,8 +13,15 @@ import android.content.Intent
 import android.widget.ArrayAdapter
 
 import android.bluetooth.BluetoothDevice
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
+import androidx.core.content.ContextCompat
 import com.example.rfp.R
+import kotlinx.android.synthetic.main.activity_main.*
 
+import com.example.rfp.data.applyWindowInsets
+import com.example.rfp.data.colorAnimation
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var btArrayAdapter: ArrayAdapter<String>
     lateinit var deviceAddressArray: ArrayList<String>
 
+    private var lastColor: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +43,35 @@ class MainActivity : AppCompatActivity() {
 
         getPermission()
         arduinoBluetooth()
+
+        lastColor = ContextCompat.getColor(this, R.color.blank)
+
+        main_navigation.setOnItemSelectedListener(object : ChipNavigationBar.OnItemSelectedListener {
+            override fun onItemSelected(id: Int) {
+                val option = when (id) {
+                    R.id.home -> R.color.home to "Home"
+                    R.id.bluetooth -> R.color.bluetooth to "Bluetooth"
+                    R.id.Graph -> R.color.graph to "Graph"
+                    R.id.more -> R.color.more to "more"
+                    else -> R.color.white to ""
+                }
+                val color = ContextCompat.getColor(this@MainActivity, option.first)
+                container.colorAnimation(lastColor, color)
+                lastColor = color
+            }
+        })
+
+        expand_button.setOnClickListener {
+            if (main_navigation.isExpanded()) {
+                TransitionManager.beginDelayedTransition(container, ChangeBounds())
+                main_navigation.collapse()
+            } else {
+                TransitionManager.beginDelayedTransition(container, ChangeBounds())
+                main_navigation.expand()
+            }
+        }
+
+        expand_button.applyWindowInsets(bottom = true)
 
     }
 
