@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun arduinoBluetooth() {
+
         btAdapter = BluetoothAdapter.getDefaultAdapter()
         if (!btAdapter.isEnabled) {
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
