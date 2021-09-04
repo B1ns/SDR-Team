@@ -5,10 +5,10 @@
     tools:ignore="UnusedAttribute,ResourceCycle">
 
     <font
-        android:font="@font/tway_sky"
+        android:font="@font/font"
         android:fontStyle="normal"
         android:fontWeight="300"
-        app:font="@font/tway_sky"
+        app:font="@font/font"
         app:fontStyle="normal"
         app:fontWeight="300" />
 

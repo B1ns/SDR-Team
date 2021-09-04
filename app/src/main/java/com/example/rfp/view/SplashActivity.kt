@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.rfp.MainActivity
 import com.example.rfp.R
 import org.jetbrains.anko.startActivity
 

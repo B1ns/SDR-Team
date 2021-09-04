@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">RFP</string>
     <string name="rfp">RFP</string>
+    <string name="status">status</string>
+    <string name="paired_devices">Paired Device</string>
+    <string name="search">Search</string>
+    <string name="send_data">Send data!</string>
+    <string name="rf">작품연구회</string>
+    <string name="dongyang_mirae_university">Dongyang Mirae University</string>
+    <string name="settings">SETTINGS</string>
 </resources>
