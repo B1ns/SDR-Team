@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".view.SettingActivity">
 
+    <ImageView
+        android:layout_width="1000dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/page_404"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Text.TitleStyle"
+        android:fontFamily="@font/font"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/black"
+        android:text="열심히 만들자.."
+        android:textSize="18pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
