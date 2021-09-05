@@ -11,7 +11,7 @@
         app:cnb_iconColor="@color/home" />
 
     <item
-        android:id="@+id/Graph"
+        android:id="@+id/graph"
         android:icon="@drawable/ic_graph"
         android:title="Graph"
         android:enabled="true"

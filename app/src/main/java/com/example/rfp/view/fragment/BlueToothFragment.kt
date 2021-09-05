@@ -22,5 +22,8 @@ class BlueToothFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_blue_tooth, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+    }
 }
