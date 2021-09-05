@@ -11,4 +11,6 @@
     <string name="copyright_2021_all_rights_reserved">Copyright 2021. 작품연구회 All Rights Reserved.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send">Send</string>
+    <string name="paired">Paired</string>
 </resources>

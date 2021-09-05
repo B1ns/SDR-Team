@@ -28,10 +28,10 @@ import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val mainFragment : MainFragment = MainFragment()
-    private val graphFragment : GraphFragment = GraphFragment()
-    private val bluetoothFragment : BlueToothFragment = BlueToothFragment()
-    private val moreFragment : MoreFragment = MoreFragment()
+    private val mainFragment: MainFragment = MainFragment()
+    private val graphFragment: GraphFragment = GraphFragment()
+    private val bluetoothFragment: BlueToothFragment = BlueToothFragment()
+    private val moreFragment: MoreFragment = MoreFragment()
 
     private lateinit var btAdapter: BluetoothAdapter
     private val REQUEST_ENABLE_BT = 1
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         openFragment(mainFragment)
 
         main_navigation.setOnItemSelectedListener {
-            when(it){
+            when (it) {
                 R.id.main -> openFragment(mainFragment)
                 R.id.bluetooth -> openFragment(bluetoothFragment)
                 R.id.graph -> openFragment(graphFragment)
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun openFragment(fragment: Fragment){
+    private fun openFragment(fragment: Fragment) {
 
         val transactions = supportFragmentManager.beginTransaction()
         transactions.replace(R.id.mainFragmentFrame, fragment)
