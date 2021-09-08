@@ -19,7 +19,9 @@
         android:theme="@style/Theme.RFP">
         <activity
             android:name=".view.activity.SettingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".view.activity.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="70dp"
     android:background="@color/main"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/bluetooth_text_item"
         style="@style/Text.TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:gravity="left"
         android:text="ASD"
         android:textColor="@color/white"
-        android:textSize="32pt" />
+        android:textSize="9pt" />
 
     <include
         layout="@layout/line"
