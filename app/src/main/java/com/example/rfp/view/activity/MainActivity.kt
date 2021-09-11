@@ -35,21 +35,11 @@ class MainActivity : AppCompatActivity() {
     private val bluetoothFragment: BlueToothFragment = BlueToothFragment()
     private val moreFragment: MoreFragment = MoreFragment()
 
-    private lateinit var btAdapter: BluetoothAdapter
-    private val REQUEST_ENABLE_BT = 1
-
-    lateinit var pairedDevices: Set<BluetoothDevice>
-    lateinit var btArrayAdapter: ArrayAdapter<String>
-    lateinit var deviceAddressArray: ArrayList<String>
-
     private var lastColor: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        btArrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1)
-        deviceAddressArray = ArrayList()
 
         getPermission()
         setOnClickListener()
