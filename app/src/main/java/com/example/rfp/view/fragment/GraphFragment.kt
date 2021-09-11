@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.rfp.R
-import com.example.rfp.databinding.FragmentBlueToothBinding
+import com.example.rfp.databinding.FragmentGraphBinding
 
 class GraphFragment : Fragment() {
 
-    private var _binding: FragmentBlueToothBinding? = null
+    private var _binding: FragmentGraphBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +19,7 @@ class GraphFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        _binding = FragmentBlueToothBinding.inflate(inflater, container, false)
+        _binding = FragmentGraphBinding.inflate(inflater, container, false)
         return binding.root
     }
 

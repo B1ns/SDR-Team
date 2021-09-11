@@ -22,6 +22,7 @@ class BlueToothFragment : Fragment() {
 
     companion object {
         val EXTRA_ADDRESS: String = "Device_address"
+        var BLUETOOTH_CONNECTED: String = "Bluetooth_state"
     }
 
     private var m_bluetoothAdapter: BluetoothAdapter? = null
@@ -85,7 +86,7 @@ class BlueToothFragment : Fragment() {
                 Log.i("device", "" + device.name)
             }
         } else {
-            toast("페어링된 장치를 찾을 수 없어요..ㅜ")
+            toast("페어링된 장치를 찾을 수 없어요.. 잘 좀 연결해봐..")
         }
 
         val listAdapter = ArrayAdapter<String>(
@@ -100,10 +101,9 @@ class BlueToothFragment : Fragment() {
                 val device: BluetoothDevice = deviceList[position]
                 val address: String = device.address
 
-
-
                 val intent = Intent(context, MainFragment::class.java)
                 intent.putExtra(EXTRA_ADDRESS, address)
+                intent.putExtra(BLUETOOTH_CONNECTED, "OK")
                 requireContext().startActivity(intent)
             }
     }

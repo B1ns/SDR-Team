@@ -14,18 +14,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
-import com.example.rfp.databinding.FragmentMainBinding
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.io.IOException
 import java.util.*
-import android.content.Intent.getIntent
-import android.content.Intent.getIntent
-
-
-
-
-
-
+import com.example.rfp.databinding.FragmentMainBinding
+import org.jetbrains.anko.support.v4.toast
 
 
 class MainFragment : Fragment() {
@@ -41,7 +34,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
+    private var checkAddress : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,11 +42,23 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
+
         val intent = Intent(requireContext(), BlueToothFragment::class.java)
+        val bluetoothConnected = intent.getStringExtra(BlueToothFragment.BLUETOOTH_CONNECTED)
 
-        m_address = intent.getStringExtra(BlueToothFragment.EXTRA_ADDRESS).toString()
 
-        ConnectToDevice(requireActivity()).execute()
+        if (bluetoothConnected == "OK"){
+            m_address = intent.getStringExtra(BlueToothFragment.EXTRA_ADDRESS).toString()
+            if(m_address != checkAddress){
+                ConnectToDevice(requireActivity()).execute()
+            }
+            checkAddress = m_address
+
+        }else if(bluetoothConnected == null){
+            toast("블루투스 연결을 해주세요.")
+        }else {
+            toast("이건 무슨 에러지..?")
+        }
 
         return binding.root
     }
