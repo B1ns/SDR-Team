@@ -24,6 +24,8 @@ import com.example.rfp.view.fragment.GraphFragment
 import com.example.rfp.view.fragment.MainFragment
 import com.example.rfp.view.fragment.MoreFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
+import com.karumi.dexter.listener.single.PermissionListener
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -50,9 +52,9 @@ class MainActivity : AppCompatActivity() {
         deviceAddressArray = ArrayList()
 
         getPermission()
-        arduinoBluetooth()
         setOnClickListener()
         setChangeUI()
+        bluetoothPermissionsCheck()
 
     }
 
@@ -79,6 +81,19 @@ class MainActivity : AppCompatActivity() {
             ) {
             }
         }).check()
+    }
+
+    private fun bluetoothPermissionsCheck() {
+        val dialogPermissionListener: PermissionListener =
+            DialogOnDeniedPermissionListener.Builder.withContext(applicationContext)
+                .withTitle("Bluetooth 권한 설정")
+                .withMessage("블루투스를 사용하기 위한 권한 입니다. 설정하십쇼").withButtonText(android.R.string.ok)
+                .withIcon(R.mipmap.ic_main)
+                .build()
+
+        Dexter.withContext(applicationContext)
+            .withPermission(Manifest.permission.BLUETOOTH_ADMIN)
+            .withListener(dialogPermissionListener).check()
     }
 
     private fun setChangeUI() {
@@ -124,14 +139,5 @@ class MainActivity : AppCompatActivity() {
         transactions.addToBackStack(null)
         transactions.commit()
 
-    }
-
-    private fun arduinoBluetooth() {
-
-        btAdapter = BluetoothAdapter.getDefaultAdapter()
-        if (!btAdapter.isEnabled) {
-            val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
-        }
     }
 }

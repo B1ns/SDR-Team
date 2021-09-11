@@ -1,6 +1,6 @@
 package com.example.rfp.view.fragment
 
-import android.animation.ValueAnimator
+import android.Manifest
 import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -49,20 +49,19 @@ class BlueToothFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        if (m_bluetoothAdapter == null) {
+        if(m_bluetoothAdapter == null) {
             toast("This device dosen't support bluetooth")
+            return
         }
-        if (!m_bluetoothAdapter!!.isEnabled) {
+        if(!m_bluetoothAdapter!!.isEnabled) {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
+
         }
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val search = { _: View ->
             toast("Search")
@@ -70,12 +69,12 @@ class BlueToothFragment : Fragment() {
         }
 
         binding.searchBtn.setOnClickListener(search)
-
     }
 
 
     private fun search() {
 
+        m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
 
         val deviceList: ArrayList<BluetoothDevice> = ArrayList()
         val nameList: ArrayList<String> = ArrayList()
