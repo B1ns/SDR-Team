@@ -11,9 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import com.example.rfp.R
 import com.example.rfp.databinding.FragmentBlueToothBinding
+import com.example.rfp.view.activity.MainActivity
 import org.jetbrains.anko.support.v4.toast
 import java.io.IOException
 
@@ -22,7 +25,6 @@ class BlueToothFragment : Fragment() {
 
     companion object {
         val EXTRA_ADDRESS: String = "Device_address"
-        var BLUETOOTH_CONNECTED: String = "Bluetooth_state"
     }
 
     private var m_bluetoothAdapter: BluetoothAdapter? = null
@@ -32,6 +34,8 @@ class BlueToothFragment : Fragment() {
     private var _binding: FragmentBlueToothBinding? = null
     private val binding get() = _binding!!
 
+
+    private val mainFragmentChange: MainFragment = MainFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +65,7 @@ class BlueToothFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val search = { _: View ->
-            toast("검색 중..!")
+            toast("검색..! 찾았다 !")
             search()
         }
         val lottie = { _: View ->
@@ -89,10 +93,12 @@ class BlueToothFragment : Fragment() {
             toast("페어링된 장치를 찾을 수 없어요.. 잘 좀 연결해봐..")
         }
 
-        val listAdapter = ArrayAdapter<String>(
-            requireContext(),
+
+        val listAdapter = ArrayAdapter(
+            activity?.applicationContext!!,
             R.layout.bluetooth_list_item,
-            R.id.bluetooth_text_item
+            R.id.bluetooth_text_item,
+            nameList
         )
         binding.bluetoothList.adapter = listAdapter
 
@@ -101,10 +107,11 @@ class BlueToothFragment : Fragment() {
                 val device: BluetoothDevice = deviceList[position]
                 val address: String = device.address
 
-                val intent = Intent(context, MainFragment::class.java)
-                intent.putExtra(EXTRA_ADDRESS, address)
-                intent.putExtra(BLUETOOTH_CONNECTED, "OK")
-                requireContext().startActivity(intent)
+                setFragmentResult("resultKey", bundleOf("bundleKey" to address))
+
+                val mainActivity = (activity as MainActivity)
+                mainActivity.changeUI()
+                mainActivity.openFragment(mainFragmentChange)
             }
     }
 
@@ -117,7 +124,7 @@ class BlueToothFragment : Fragment() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-        }else{
+        } else {
             toast("연결하고 눌러줄래..? 해제할게 없자나..")
         }
     }

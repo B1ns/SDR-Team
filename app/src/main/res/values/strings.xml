@@ -13,4 +13,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="send">Send</string>
     <string name="paired">Paired</string>
+    <string name="analyzer_performance">Analyzer Performance</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="h_plane">H-Plane</string>
+    <string name="e_plane">E-Plane</string>
 </resources>

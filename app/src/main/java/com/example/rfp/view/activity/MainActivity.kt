@@ -16,6 +16,7 @@ import android.bluetooth.BluetoothDevice
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.rfp.R
+import com.example.rfp.data.SocketApplication
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.example.rfp.data.colorAnimation
@@ -26,6 +27,7 @@ import com.example.rfp.view.fragment.MoreFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
 import com.karumi.dexter.listener.single.PermissionListener
+import io.socket.client.Socket
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     private val moreFragment: MoreFragment = MoreFragment()
 
     private var lastColor: Int = 0
+
+    lateinit var mSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +126,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun openFragment(fragment: Fragment) {
+    fun changeUI(){
+        main_navigation.setItemSelected(R.id.main)
+    }
+
+    fun openFragment(fragment: Fragment) {
 
         val transactions = supportFragmentManager.beginTransaction()
         transactions.replace(R.id.mainFragmentFrame, fragment)
