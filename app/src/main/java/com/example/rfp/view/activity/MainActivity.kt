@@ -130,6 +130,10 @@ class MainActivity : AppCompatActivity() {
         main_navigation.setItemSelected(R.id.main)
     }
 
+    fun successUI(){
+        main_navigation.setItemSelected(R.id.graph)
+    }
+
     fun openFragment(fragment: Fragment) {
 
         val transactions = supportFragmentManager.beginTransaction()

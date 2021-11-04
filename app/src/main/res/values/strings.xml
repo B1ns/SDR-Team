@@ -17,4 +17,5 @@
     <string name="dashboard">Dashboard</string>
     <string name="h_plane">H-Plane</string>
     <string name="e_plane">E-Plane</string>
+    <string name="success">Success</string>
 </resources>

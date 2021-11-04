@@ -1,10 +1,10 @@
 package com.example.rfp.view.fragment
 
+import android.animation.Animator
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
-import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -15,11 +15,11 @@ import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import androidx.fragment.app.setFragmentResultListener
 import com.example.rfp.data.SocketApplication
+import com.example.rfp.databinding.FragmentMainBinding
+import com.example.rfp.view.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.io.IOException
 import java.util.*
-import com.example.rfp.databinding.FragmentMainBinding
-import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import org.jetbrains.anko.support.v4.toast
@@ -39,13 +39,15 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
+    private val graphFragmentChange: GraphFragment = GraphFragment()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
-        var resultDeviceAddress:String
+        var resultDeviceAddress: String
 
         setFragmentResultListener("resultKey") { requestKey, bundle ->
             resultDeviceAddress = bundle.getString("bundleKey").toString()
@@ -84,6 +86,7 @@ class MainFragment : Fragment() {
             mSocket.emit("send", 1)
             mSocket.emit("logout", "logout")
             sendArduino()
+
         }
         binding.hPlane.setOnClickListener {
             h_plane.visibility = View.GONE
@@ -94,19 +97,52 @@ class MainFragment : Fragment() {
             mSocket.emit("logout", "logout")
             sendArduino()
 
+            main_second_progress.addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(p0: Animator?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onAnimationEnd(p0: Animator?) {
+                    animationStart()
+                }
+
+                override fun onAnimationCancel(p0: Animator?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onAnimationRepeat(p0: Animator?) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
         }
+
+        main_success.setOnClickListener {
+            val mainActivity = (activity as MainActivity)
+            mainActivity.successUI()
+            mainActivity.openFragment(graphFragmentChange)
+        }
+    }
+
+    fun animationStart() {
+
+        main_button_layout_one.visibility = View.GONE
+        main_button_layout_two.visibility = View.GONE
+
+        animationMainButton(true)
     }
 
     fun animationMainButton(sine: Boolean) {
         if (sine) {
-            val anim = TranslateAnimation(main_button_success.width.toFloat(), 0f, 0f, 0f)
-            anim.duration = 4000
+            val anim = TranslateAnimation(0f, 0f, main_button_success.height.toFloat(), 0f)
+            anim.duration = 500
             anim.fillAfter = true
             main_frame_layout.animation = anim
             main_button_success.visibility = View.VISIBLE
         } else {
             val anim = TranslateAnimation(0f, main_button_success.width.toFloat(), 0f, 0f)
-            anim.duration = 4000
+            anim.duration = 500
             anim.fillAfter = true
             main_frame_layout.animation = anim
             main_button_success.visibility = View.GONE

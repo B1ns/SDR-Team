@@ -22,12 +22,12 @@
         <entry key="app/src/main/res/font/app_font.xml" value="0.33487179487179486" />
         <entry key="app/src/main/res/layout/activity_bluetooth.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.75" />
-        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.178515625" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/bluetooth_list_item.xml" value="0.610749934334232" />
         <entry key="app/src/main/res/layout/fragment_blue_tooth.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_graph.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.67" />
         <entry key="app/src/main/res/layout/fragment_more.xml" value="0.183984375" />
         <entry key="app/src/main/res/layout/line.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/loding_dialog.xml" value="1.0" />
