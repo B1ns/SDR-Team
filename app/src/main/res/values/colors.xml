@@ -14,7 +14,7 @@
 
     <color name="graph">#FFBB86FC</color>
     <color name="bluetooth">#FF6200EE</color>
-    <color name="home">@android:color/holo_green_light</color>
+    <color name="home">@color/purple_700</color>
     <color name="more">@android:color/holo_red_light</color>
 
 </resources>

@@ -15,7 +15,9 @@
     <string name="paired">Paired</string>
     <string name="analyzer_performance">Analyzer Performance</string>
     <string name="dashboard">Dashboard</string>
-    <string name="h_plane">H-Plane</string>
-    <string name="e_plane">E-Plane</string>
+    <string name="h_plane">H-Plane 측정</string>
+    <string name="e_plane">E-Plane 측정</string>
     <string name="success">Success</string>
+    <string name="main_setup_layout_text">측정 후 결과를 확인하실 수 있습니다.</string>
+    <string name="kakao_app_key">dd78bc532a7d199ae94a28b0cd3acbc5</string>
 </resources>

@@ -82,4 +82,7 @@ dependencies {
 
     // socket
     implementation 'io.socket:socket.io-client:2.0.0'
+
+    // TTS
+    implementation group: 'com.kakao.sdk', name: 'newtone', version: '6.1.4'
 }

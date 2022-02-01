@@ -17,6 +17,10 @@ import androidx.fragment.app.setFragmentResult
 import com.example.rfp.R
 import com.example.rfp.databinding.FragmentBlueToothBinding
 import com.example.rfp.view.activity.MainActivity
+import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
+import com.kakao.sdk.newtoneapi.TextToSpeechClient
+import com.kakao.sdk.newtoneapi.TextToSpeechListener
+import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import org.jetbrains.anko.support.v4.toast
 import java.io.IOException
 
@@ -35,6 +39,7 @@ class BlueToothFragment : Fragment() {
     private val binding get() = _binding!!
 
 
+    var ttsClient: TextToSpeechClient? = null
     private val mainFragmentChange: MainFragment = MainFragment()
 
     override fun onCreateView(
@@ -51,6 +56,10 @@ class BlueToothFragment : Fragment() {
 
         m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         if (m_bluetoothAdapter == null) {
+            SpeechRecognizerManager.getInstance().initializeLibrary(requireContext())
+            TextToSpeechManager.getInstance().initializeLibrary(requireContext())
+
+            ttsClient?.play("이 장치는 블루투스를 지원하지 않습니다.")
             toast("이 장치는 블루투스를 지원하지 않습니다..ㅜ")
             return
         }
@@ -72,12 +81,37 @@ class BlueToothFragment : Fragment() {
             toast("오잉.. 연결이 해제됬다 !")
             disconnect()
         }
+
+        ttsClient = TextToSpeechClient.Builder()
+            .setSpeechMode(TextToSpeechClient.NEWTONE_TALK_1)     // 음성합성방식
+            .setSpeechSpeed(1.0)            // 발음 속도(0.5~4.0)
+            .setSpeechVoice(TextToSpeechClient.VOICE_WOMAN_READ_CALM)  //TTS 음색 모드 설정(여성 차분한 낭독체)
+            .setListener(object : TextToSpeechListener {
+                override fun onFinished() {
+                    val intSentSize = ttsClient?.getSentDataSize()      //세션 중에 전송한 데이터 사이즈
+                    val intRecvSize = ttsClient?.getReceivedDataSize()  //세션 중에 전송받은 데이터 사이즈
+
+                    val strInacctiveText =
+                        "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
+
+                    Log.i("TAG", strInacctiveText)
+                }
+
+                override fun onError(code: Int, message: String?) {
+                    Log.d("TAG", code.toString())
+                }
+            })
+            .build()
+
         binding.bluetoothLottie.setOnClickListener(lottie)
         binding.searchBtn.setOnClickListener(search)
     }
 
     private fun search() {
+        SpeechRecognizerManager.getInstance().initializeLibrary(requireContext())
+        TextToSpeechManager.getInstance().initializeLibrary(requireContext())
 
+        ttsClient?.play("기기를 검색합니다.")
         m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
 
         val deviceList: ArrayList<BluetoothDevice> = ArrayList()

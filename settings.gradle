@@ -6,6 +6,7 @@ dependencyResolutionManagement {
         jcenter()
         maven { url "https://maven.xyz.com" }
         maven { url 'https://jitpack.io' }
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 

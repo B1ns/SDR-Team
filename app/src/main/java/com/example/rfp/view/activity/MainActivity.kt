@@ -1,22 +1,24 @@
 package com.example.rfp.view.activity
 
 import android.Manifest
-import android.bluetooth.BluetoothAdapter
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import android.content.Intent
-import android.widget.ArrayAdapter
-
-import android.bluetooth.BluetoothDevice
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.rfp.R
-import com.example.rfp.data.SocketApplication
 import kotlinx.android.synthetic.main.activity_main.*
 
 import com.example.rfp.data.colorAnimation
@@ -29,6 +31,7 @@ import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
 import com.karumi.dexter.listener.single.PermissionListener
 import io.socket.client.Socket
 import org.jetbrains.anko.startActivity
+import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,9 +41,11 @@ class MainActivity : AppCompatActivity() {
     private val moreFragment: MoreFragment = MoreFragment()
 
     private var lastColor: Int = 0
+    var NETWORK_STATE_CODE = 0
 
     lateinit var mSocket: Socket
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,7 +69,8 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.BLUETOOTH_ADMIN,
             Manifest.permission.BLUETOOTH,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_NETWORK_STATE
         ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(report: MultiplePermissionsReport) {
             }
@@ -126,11 +132,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun changeUI(){
+    fun changeUI() {
         main_navigation.setItemSelected(R.id.main)
     }
 
-    fun successUI(){
+    fun successUI() {
         main_navigation.setItemSelected(R.id.graph)
     }
 
@@ -141,5 +147,19 @@ class MainActivity : AppCompatActivity() {
         transactions.addToBackStack(null)
         transactions.commit()
 
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            NETWORK_STATE_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

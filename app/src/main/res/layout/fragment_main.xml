@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#211c34"
+    android:background="#111111"
     tools:context=".view.fragment.MainFragment">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_fragment_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#262238"
+        android:background="#1C1C1C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:background="#474747"
+            android:background="#333333"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dashboard_title" />
@@ -77,77 +76,64 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_dashboard_title">
 
-            <com.github.mikephil.charting.charts.LineChart
+            <WebView
+                android:id="@+id/main_graph"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_margin="20dp"
+                android:layout_weight="2"
+                android:visibility="gone" />
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/mainWebViewBG"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/main_bg_webview" />
+
+                <TextView
+                    style="@style/Text.TitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/font"
+                    android:text="@string/main_setup_layout_text"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:animateLayoutChanges="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_graph_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main_button_success"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/main_layout_background"
-            android:visibility="invisible">
-
-            <Button
-                android:id="@+id/main_success"
-                style="@style/Text.TitleStyle"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/font"
-                android:text="@string/success"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_button_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="130dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_button_layout_one"
                 android:layout_width="340dp"
-                android:layout_height="220dp"
+                android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/main_layout_background"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/main_button_layout_two"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -171,13 +157,13 @@
                     android:id="@+id/main_first_progress"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="50dp"
+                    android:layout_margin="5dp"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_94HTw9.json" />
+                    app:lottie_url="https://assets9.lottiefiles.com/private_files/lf30_7ojC5s.json" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,10 +172,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_button_layout_two"
                 android:layout_width="340dp"
-                android:layout_height="220dp"
+                android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/main_layout_background"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/main_button_layout_one"
                 app:layout_constraintTop_toTopOf="parent">
@@ -212,19 +197,55 @@
                     android:id="@+id/main_second_progress"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="50dp"
+                    android:layout_margin="5dp"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_94HTw9.json" />
-
+                    app:lottie_url="https://assets9.lottiefiles.com/private_files/lf30_7ojC5s.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_layout">
+
+            <Button
+                android:id="@+id/result_btn"
+                style="@style/Text.TitleStyle"
+                android:layout_width="600dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/graph_result_btn_bg"
+                android:fontFamily="@font/font"
+                android:text="측정 결과 확인"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/refresh_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_refresh"
+                app:backgroundTint="@color/purple_700"
+                app:fabCustomSize="80dp"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="42dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

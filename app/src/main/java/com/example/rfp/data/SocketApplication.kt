@@ -11,7 +11,7 @@ class SocketApplication {
         private lateinit var socket: Socket
         fun get(): Socket{
             try {
-                socket = IO.socket("http://3.36.64.198:8080/")
+                socket = IO.socket("http://3.34.194.121:8080/")
             } catch (e : URISyntaxException){
                 Log.d("url", e.toString())
                 e.printStackTrace()
